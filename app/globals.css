@@ -7,7 +7,7 @@ footer>div{color:#f4f0e6}.business{background:var(--surface)!important;color:#f4
 .cinematic{position:fixed;inset:0;z-index:30;background:var(--intro-bg);overflow:hidden;pointer-events:none}
 .cinematic-video,.cinematic-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:var(--intro-bg)}
 .cinematic-video{opacity:0}
-.cinematic-skip{pointer-events:auto;position:absolute;bottom:28px;right:7%;min-height:48px;padding:12px 16px;background:var(--intro-bg);color:var(--cream);border:1px solid var(--line);cursor:pointer;font-size:12px;letter-spacing:1px}
+.cinematic-skip{pointer-events:auto;position:absolute;z-index:9;bottom:28px;right:7%;min-height:48px;padding:12px 16px;background:var(--intro-bg);color:var(--cream);border:1px solid var(--line);cursor:pointer;font-size:12px;letter-spacing:1px}
 .cinematic[data-phase=transition] .cinematic-skip{pointer-events:none}
 .menu{padding-top:176px}.menu:focus{outline:none}.eyebrow{color:var(--lime)}
 .menu h2{font-size:clamp(35px,5vw,74px)}.business h2{font-size:clamp(34px,5.5vw,90px)}
@@ -121,3 +121,5 @@ body:has(.cinematic) .cart-fab{display:none}
 .cart-submit:hover{filter:brightness(1.08)}.cart-submit:focus-visible{outline:2px solid var(--cream);outline-offset:3px}
 body:has(.cart-fab) footer{padding-bottom:100px}
 @media(max-width:700px){.size-add{min-width:0;justify-content:space-between;gap:4px;padding:0 5px 0 8px;border-color:var(--line);min-height:40px;font-size:15px}.size-add .size-label{display:inline}.cart-fab{right:14px;bottom:14px}.cart-head{padding:18px 18px 4px}.cart-desc{padding:0 18px}.cart-body{padding:16px 18px 28px}}
+/* Loading poster: the Donatello pizza as a centred circle until the first clip starts. */
+.cinematic .cinematic-poster{inset:auto;top:50%;left:50%;width:min(62vw,62vh);height:min(62vw,62vh);padding:0;transform:translate(-50%,-50%);border-radius:50%;object-fit:cover}

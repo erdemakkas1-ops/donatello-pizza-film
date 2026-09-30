@@ -181,7 +181,7 @@ export default function CinematicSequence() {
   if (phase === "done") return null;
   const skip = () => (root.current as (HTMLDivElement & { skip?: () => void }) | null)?.skip?.();
   return <div ref={root} className="cinematic" data-phase={phase} data-scene={scene + 1}>
-    <img className="cinematic-poster" src="/assets/pizza.png" alt="" />
+    <img className="cinematic-poster" src="/assets/menu/pizzas/donatello.webp" alt="" />
     <video ref={videoA} className="cinematic-video is-a" muted playsInline preload="auto" aria-label={`Donatello pizza filmi, sahne ${scene + 1}`} />
     <video ref={videoB} className="cinematic-video is-b" muted playsInline preload="none" aria-hidden="true" />
     <canvas className="cinematic-video cut-canvas" aria-hidden="true" />
