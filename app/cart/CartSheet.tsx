@@ -155,7 +155,7 @@ export default function CartSheet() {
             <SheetClose className="cart-close" aria-label="Sepeti kapat">KAPAT ✕</SheetClose>
           </div>
           <SheetDescription className="cart-desc">
-            Siparişiniz WhatsApp üzerinden işletmeye iletilir; onay ve fiyat bilgisi oradan gelir.
+            Siparişiniz WhatsApp üzerinden işletmeye iletilir; onay oradan gelir.
           </SheetDescription>
 
           {lines.length === 0 ? (

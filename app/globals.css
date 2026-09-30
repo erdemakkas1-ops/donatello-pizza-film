@@ -32,7 +32,7 @@ footer small{display:block;font-size:11px;letter-spacing:3px;color:var(--lime);f
 
 /* Menu: pizzas grouped as on the printed menu, with Small/Medium/Large price columns. */
 .menu{--price-cols:repeat(3,96px)}
-@media(max-width:1100px){.menu{--price-cols:repeat(3,72px)}.row{grid-template-columns:32px 72px minmax(0,1fr) auto;gap:0 18px}.row img{width:72px;height:72px}}
+@media(max-width:1100px){.menu{--price-cols:repeat(3,88px)}.size-add{font-size:15px;gap:6px}.size-add .add-icon{width:22px;height:22px}.row{grid-template-columns:32px 72px minmax(0,1fr) auto;gap:0 18px}.row img{width:72px;height:72px}}
 .product-stage{height:auto;min-height:420px;padding-bottom:8px}.active-product img,.peek img{object-fit:cover;border-radius:50%}.active-product{max-width:min(560px,64vw)}
 .menu-note{margin:22px 0 0;font:italic 16px/1.5 var(--font-italic);color:#d8d1c1}
 .pizza-group{margin-top:56px}
@@ -47,7 +47,7 @@ footer small{display:block;font-size:11px;letter-spacing:3px;color:var(--lime);f
 .row strong{display:block;font:clamp(22px,2.2vw,30px)/1.15 var(--font-display);letter-spacing:.2px;color:var(--cream)}
 .row small{display:block;margin-top:8px;font-size:15px;line-height:1.5;color:#e2dccd}
 .prices{display:grid;grid-template-columns:var(--price-cols)}
-.sides{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:48px 40px;margin-top:96px;padding-top:56px;border-top:1px solid var(--line)}
+.sides{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:56px 48px;margin-top:96px;padding-top:56px;border-top:1px solid var(--line)}
 .sides h3{font:26px/1.1 var(--font-display);margin:0 0 14px;color:var(--lime)}
 .sides li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--line);font-size:15px;line-height:1.4;color:#ece6d8}
 .sides li>span:nth-child(2){white-space:nowrap;font-weight:600;color:var(--cream)}
@@ -123,3 +123,5 @@ body:has(.cart-fab) footer{padding-bottom:100px}
 @media(max-width:700px){.size-add{min-width:0;justify-content:space-between;gap:4px;padding:0 5px 0 8px;border-color:var(--line);min-height:40px;font-size:15px}.size-add .size-label{display:inline}.cart-fab{right:14px;bottom:14px}.cart-head{padding:18px 18px 4px}.cart-desc{padding:0 18px}.cart-body{padding:16px 18px 28px}}
 /* Loading poster: the Donatello pizza as a centred circle until the first clip starts. */
 .cinematic .cinematic-poster{inset:auto;top:50%;left:50%;width:min(62vw,62vh);height:min(62vw,62vh);padding:0;transform:translate(-50%,-50%);border-radius:50%;object-fit:cover}
+.size-price{white-space:nowrap}
+@media(max-width:380px){.size-add{font-size:13px;gap:3px;padding:0 4px 0 7px}.size-add .add-icon{width:20px;height:20px;font-size:13px}}
