@@ -1,4 +1,4 @@
-export const business = {address:"Halaskargazi Cd. 50/A, İstanbul",hours:"10.30 – 02.00" as string|null,phone:"0 530 236 38 86" as string|null,instagram:"donatellopizzaselimpasa" as string|null};
+export const business = {address:"Halaskargazi Cd. 50/A, İstanbul",hours:"10.30 – 02.00" as string|null,phone:"0 530 236 38 86" as string|null,instagram:"donatellopizzaselimpasa" as string|null,whatsapp:"905302363886"};
 
 // Prices are intentionally empty until the owner confirms them; fill s/m/l (pizzas) or price (sides) in TL.
 export type Sizes = {s?:number;m?:number;l?:number};
