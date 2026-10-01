@@ -16,10 +16,10 @@ footer>div{color:#f4f0e6}.business{background:var(--surface)!important;color:#f4
 @media(prefers-reduced-motion:reduce){.cinematic{display:none}html{scroll-behavior:auto}}
 
 /* Six-scene final film player */
-.cinematic-video{z-index:2;opacity:0;object-fit:contain;background:var(--intro-bg)}.cinematic-poster{z-index:1;object-fit:contain;padding:8vh 0}
-.scene-six-hit-layer{position:absolute;z-index:8;left:50%;top:50%;transform:translate(-50%,-50%);width:min(100vw,calc(100vh * .5414));height:min(100vh,calc(100vw / .5414));pointer-events:none}.scene-six-hit-layer button{position:absolute;left:78%;top:24%;width:22%;height:7%;padding:0;border:0;background:transparent;color:transparent;pointer-events:auto;cursor:pointer}
-.cut-canvas{z-index:3;background:transparent;pointer-events:none}
-@media(max-width:700px){.cinematic-video{object-fit:cover;object-position:center center}.cinematic-poster{padding:16vh 0;object-fit:contain}.cinematic-skip{bottom:45px}.scene-six-hit-layer{width:max(100vw,calc(100vh * .5414));height:max(100vh,calc(100vw / .5414))}}
+.cinematic-video{z-index:2;opacity:0;object-fit:contain;background:var(--intro-bg)}.cinematic-poster{z-index:1}
+
+
+@media(max-width:700px){.cinematic-video{object-fit:cover;object-position:center center}.cinematic-poster{object-fit:cover}.cinematic-skip{bottom:45px}}
 
 /* Readable final lockup and navigation. */
 footer{padding:60px 5% 32px;background:var(--bg);color:#f4f0e6}
@@ -121,7 +121,5 @@ body:has(.cinematic) .cart-fab{display:none}
 .cart-submit:hover{filter:brightness(1.08)}.cart-submit:focus-visible{outline:2px solid var(--cream);outline-offset:3px}
 body:has(.cart-fab) footer{padding-bottom:100px}
 @media(max-width:700px){.size-add{min-width:0;justify-content:space-between;gap:4px;padding:0 5px 0 8px;border-color:var(--line);min-height:40px;font-size:15px}.size-add .size-label{display:inline}.cart-fab{right:14px;bottom:14px}.cart-head{padding:18px 18px 4px}.cart-desc{padding:0 18px}.cart-body{padding:16px 18px 28px}}
-/* Loading poster: the Donatello pizza as a centred circle until the first clip starts. */
-.cinematic .cinematic-poster{inset:auto;top:50%;left:50%;width:min(62vw,62vh);height:min(62vw,62vh);padding:0;transform:translate(-50%,-50%);border-radius:50%;object-fit:cover}
 .size-price{white-space:nowrap}
 @media(max-width:380px){.size-add{font-size:13px;gap:3px;padding:0 4px 0 7px}.size-add .add-icon{width:20px;height:20px;font-size:13px}}
