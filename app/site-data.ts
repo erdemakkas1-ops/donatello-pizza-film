@@ -72,3 +72,28 @@ export const googleReviews = {
     {name:"Burcu Ç.",text:"Efsane lezzetlerle dolu bir işletme. Her dilimde mutluluk veren 4 peynirli pizzayı mutlaka denemelisiniz. Çalışanlar ve işletme sahibi çok ilgili."},
   ],
 };
+
+// Campaigns from the printed flyer. pickupOnly deals force "Gel-al" in the cart.
+export type Campaign = { id: string; name: string; contents: string; price: number; pickupOnly?: boolean };
+export const campaigns = {
+  pickup: {
+    title: "Gel-Al'a Özel Fırsatlar",
+    until: "15.12.2026",
+    items: [
+      { id: "gelal-karisik-ikili", name: "2 Karışık + 1 L İçecek", contents: "2 adet orta boy karışık pizza + 1 L içecek", price: 699, pickupOnly: true },
+      { id: "ogrenci-ikilisi", name: "Öğrenci İkilisi", contents: "1 adet küçük boy karışık pizza + 1 adet ayran", price: 250, pickupOnly: true },
+    ] as Campaign[],
+  },
+  menus: {
+    title: "Menüler",
+    items: [
+      { id: "donatello-menu", name: "Donatello Menü", contents: "Donatello pizza büyük boy + 1 L içecek", price: 699 },
+      { id: "aile-menu", name: "Aile Menü", contents: "2 orta boy karışık pizza + 4 adet nugget + parmak patates orta boy + 1 L içecek", price: 999 },
+      { id: "buyuk-keyif-menu", name: "Büyük Keyif Menü", contents: "2 büyük boy karışık pizza + 1 L içecek", price: 1099 },
+      { id: "kanka-menu", name: "Kanka Menü", contents: "3 orta boy karışık pizza + 1 L içecek", price: 1199 },
+      { id: "super-ikili-menu", name: "Süper İkili Menü", contents: "2 orta boy karışık pizza + 2 adet sufle + 1 L içecek", price: 1299 },
+      { id: "parti-menu", name: "Parti Menü", contents: "3 büyük boy karışık pizza + parmak patates büyük boy + 6 adet nugget + 2,5 L içecek", price: 1799 },
+      { id: "citir-kova-menu", name: "Çıtır Kova Menü", contents: "Parmak patates orta boy + 4 adet nugget + 2 adet fleto", price: 299 },
+    ] as Campaign[],
+  },
+};

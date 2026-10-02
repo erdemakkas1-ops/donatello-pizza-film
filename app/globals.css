@@ -123,3 +123,21 @@ body:has(.cart-fab) footer{padding-bottom:100px}
 @media(max-width:700px){.size-add{min-width:0;justify-content:space-between;gap:4px;padding:0 5px 0 8px;border-color:var(--line);min-height:40px;font-size:15px}.size-add .size-label{display:inline}.cart-fab{right:14px;bottom:14px}.cart-head{padding:18px 18px 4px}.cart-desc{padding:0 18px}.cart-body{padding:16px 18px 28px}}
 .size-price{white-space:nowrap}
 @media(max-width:380px){.size-add{font-size:13px;gap:3px;padding:0 4px 0 7px}.size-add .add-icon{width:20px;height:20px;font-size:13px}}
+
+/* Campaigns tab */
+.campaigns{display:grid;gap:64px;margin-top:48px}
+.campaign-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 24px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.campaign-head h3{font:clamp(26px,3vw,40px)/1.05 var(--font-display);margin:0}
+.campaign-head span{font:italic 15px/1.4 var(--font-italic);color:#d8d1c1}
+.campaigns ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,420px),1fr));column-gap:48px}
+.campaign{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 0;border-bottom:1px solid var(--line)}
+.campaign h4{margin:0;font:clamp(21px,2vw,26px)/1.15 var(--font-display);color:var(--cream)}
+.campaign p{margin:8px 0 0;font-size:15px;line-height:1.5;color:#e2dccd}
+.campaign-buy{display:grid;justify-items:end;gap:10px;flex:none}
+.campaign-buy b{font:600 22px var(--font-sans);color:var(--lime);white-space:nowrap}
+.campaign-add{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 6px 0 14px;border:1px solid var(--line);background:none;color:var(--cream);font:600 11px var(--font-sans);letter-spacing:1.5px;cursor:pointer}
+.campaign-add:hover,.campaign-add:focus-visible{border-color:var(--lime)}
+.cart-pickup{width:100%;margin:6px 0 0;font:italic 14px/1.5 var(--font-italic);color:#ffd28a}
+.cart-choice input:disabled+*,.cart-choice label:has(input:disabled){opacity:.45;cursor:not-allowed}
+@media(max-width:700px){.campaigns{gap:48px;margin-top:36px}.campaign{flex-direction:column;align-items:stretch;gap:14px}.campaign-buy{display:flex;justify-content:space-between;align-items:center}}
+

@@ -2,7 +2,8 @@
 
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, useSyncExternalStore, type ReactNode } from "react";
 
-export type CartLine = { key: string; name: string; variant?: string; price?: number; qty: number };
+// pickupOnly: campaign valid for "Gel-al" only; the checkout locks delivery when one is in the cart.
+export type CartLine = { key: string; name: string; variant?: string; price?: number; qty: number; pickupOnly?: boolean };
 type NewLine = Omit<CartLine, "qty">;
 
 type CartState = {

@@ -49,7 +49,9 @@ function buildMessage(lines: CartLine[], d: Details, total: number | null) {
 // Mounted only while the sheet is open (client-side), so saved details can seed the initial state.
 function CheckoutForm({ onSent }: { onSent: () => void }) {
   const { lines, setQty } = useCart();
-  const [details, setDetails] = useState<Details>(loadDetails);
+  const [saved, setDetails] = useState<Details>(loadDetails);
+  const pickupOnly = lines.some((l) => l.pickupOnly);
+  const details: Details = pickupOnly ? { ...saved, delivery: "Gel-al" } : saved;
   const [errors, setErrors] = useState<Partial<Record<keyof Details, string>>>({});
 
   const update = <K extends keyof Details>(key: K, value: Details[K]) => {
@@ -100,8 +102,9 @@ function CheckoutForm({ onSent }: { onSent: () => void }) {
       <fieldset className="cart-choice">
         <legend>Teslimat</legend>
         {(["Paket servis", "Gel-al"] as Delivery[]).map((v) => (
-          <label key={v}><input type="radio" name="delivery" checked={details.delivery === v} onChange={() => update("delivery", v)} />{v}</label>
+          <label key={v}><input type="radio" name="delivery" checked={details.delivery === v} disabled={pickupOnly && v === "Paket servis"} onChange={() => update("delivery", v)} />{v}</label>
         ))}
+        {pickupOnly && <p className="cart-pickup">Sepetinizde gel-al’a özel kampanya olduğu için sipariş gel-al olarak verilir.</p>}
       </fieldset>
 
       <label className="cart-field" htmlFor="order-name">Ad Soyad
