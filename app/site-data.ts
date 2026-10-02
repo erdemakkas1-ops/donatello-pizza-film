@@ -47,7 +47,8 @@ export const sides:{title:string;size?:string;items:{name:string;price?:number}[
   {title:"Ekmek & Kenarlar",items:[{name:"Mozzarella Peynirli Ekmek",price:200},{name:"Cheddarlı Ekmek",price:250},{name:"Peynir Kenar",price:150},{name:"Sosis Kenar",price:150}]},
   {title:"Ekstra",items:[{name:"Parmak Patates Büyük",price:220},{name:"Parmak Patates Orta",price:150},{name:"Elma Dilim Patates",price:170},{name:"Ketçap",price:10},{name:"Mayonez",price:10},{name:"Ranch Sos",price:25},{name:"Acı Sos",price:25},{name:"Barbekü Sos",price:25},{name:"Sarımsaklı Sos",price:25}]},
   {title:"Tatlılar",items:[{name:"Sufle",price:250},{name:"Profiterol",price:300},{name:"Soğuk Baklava 250 gr (4 dilim)",price:250},{name:"Soğuk Baklava 500 gr (8 dilim)",price:450},{name:"Soğuk Baklava 1000 gr (16 dilim)",price:800}]},
-  {title:"İçecekler",items:[{name:"Kutu İçecek 330 ml",price:90},{name:"Ayran 300 ml",price:50},{name:"Ayran 1 lt",price:100},{name:"Su 500 ml",price:20}]},
+  {title:"Kutu İçecekler 330 ml",size:"330 ml",items:[{name:"Coca-Cola",price:90},{name:"Coca-Cola Zero",price:90},{name:"Fanta",price:90},{name:"Sprite",price:90},{name:"Fuse Tea Şeftali",price:90},{name:"Fuse Tea Limon",price:90},{name:"Fuse Tea Mango",price:90}]},
+  {title:"İçecekler",items:[{name:"Ayran 300 ml",price:50},{name:"Ayran 1 lt",price:100},{name:"Su 500 ml",price:20}]},
   {title:"İçecekler 1 Litre",size:"1 lt",items:[{name:"Coca-Cola",price:110},{name:"Coca-Cola Zero",price:110},{name:"Fanta",price:110},{name:"Sprite",price:110},{name:"Fuse Tea Şeftali",price:110},{name:"Fuse Tea Limon",price:110},{name:"Fuse Tea Mango",price:110}]},
   {title:"İçecekler 2,5 Litre",size:"2,5 lt",items:[{name:"Coca-Cola",price:180},{name:"Fanta",price:180}]},
 ];
