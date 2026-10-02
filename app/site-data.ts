@@ -41,12 +41,15 @@ export const pizzaThumb = (p:Pizza) => `/assets/menu/pizzas/${p.id}-thumb.webp`;
 
 export const toppingsText = (p:Pizza) => (p.toppings.length ? p.toppings : ["Pizza sosu","Mozzarella"]).join(" / ");
 
-export const sides:{title:string;items:{name:string;price?:number}[]}[] = [
+// size: the bottle size shared by a drinks group; it is appended to the item name in the cart and the order message.
+export const sides:{title:string;size?:string;items:{name:string;price?:number}[]}[] = [
   {title:"Nugget & Fleto",items:[{name:"4'lü Nugget",price:100},{name:"8'li Nugget",price:170},{name:"2'li Fleto",price:150},{name:"4'lü Fleto",price:270}]},
   {title:"Ekmek & Kenarlar",items:[{name:"Mozzarella Peynirli Ekmek",price:200},{name:"Cheddarlı Ekmek",price:250},{name:"Peynir Kenar",price:150},{name:"Sosis Kenar",price:150}]},
-  {title:"Ekstra",items:[{name:"Parmak Patates Büyük",price:220},{name:"Parmak Patates Orta",price:150},{name:"Elma Dilim Patates",price:170},{name:"Ketçap, Mayonez",price:10},{name:"Ranch Sos, Acı Sos",price:25},{name:"Barbekü Sos, Sarımsaklı Sos",price:25}]},
+  {title:"Ekstra",items:[{name:"Parmak Patates Büyük",price:220},{name:"Parmak Patates Orta",price:150},{name:"Elma Dilim Patates",price:170},{name:"Ketçap",price:10},{name:"Mayonez",price:10},{name:"Ranch Sos",price:25},{name:"Acı Sos",price:25},{name:"Barbekü Sos",price:25},{name:"Sarımsaklı Sos",price:25}]},
   {title:"Tatlılar",items:[{name:"Sufle",price:250},{name:"Profiterol",price:300},{name:"Soğuk Baklava 250 gr (4 dilim)",price:250},{name:"Soğuk Baklava 500 gr (8 dilim)",price:450},{name:"Soğuk Baklava 1000 gr (16 dilim)",price:800}]},
-  {title:"İçecekler",items:[{name:"Kutu İçecek 330 ml",price:90},{name:"İçecek 1 lt",price:110},{name:"İçecek 2,5 lt",price:180},{name:"Ayran 300 ml",price:50},{name:"Ayran 1 lt",price:100},{name:"Su 500 ml",price:20}]},
+  {title:"İçecekler",items:[{name:"Kutu İçecek 330 ml",price:90},{name:"Ayran 300 ml",price:50},{name:"Ayran 1 lt",price:100},{name:"Su 500 ml",price:20}]},
+  {title:"İçecekler 1 Litre",size:"1 lt",items:[{name:"Coca-Cola",price:110},{name:"Coca-Cola Zero",price:110},{name:"Fanta",price:110},{name:"Sprite",price:110},{name:"Fuse Tea Şeftali",price:110},{name:"Fuse Tea Limon",price:110},{name:"Fuse Tea Mango",price:110}]},
+  {title:"İçecekler 2,5 Litre",size:"2,5 lt",items:[{name:"Coca-Cola",price:180},{name:"Fanta",price:180}]},
 ];
 
 // Google reviews from the business's Google Maps listing (snapshot 2026-09-27): wording kept, punctuation tidied,
