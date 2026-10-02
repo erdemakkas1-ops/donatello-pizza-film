@@ -1,3 +1,6 @@
+// Public address of the site; change here when a custom domain is connected (canonical, sitemap, robots, llms.txt).
+export const siteUrl = "https://donatello-pizza-film.vercel.app";
+
 export const business = {address:"Halaskargazi Cd. 50/A, İstanbul",hours:"10.30 – 02.00" as string|null,phone:"0530 236 38 86" as string|null,instagram:"donatellopizzaselimpasa" as string|null,whatsapp:"905302363886"};
 
 // Prices in TL from the printed menu; s/m/l for pizzas, price for side items.
