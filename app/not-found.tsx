@@ -6,7 +6,7 @@ export const metadata: Metadata = { title: "Sayfa bulunamadı — Donatello Pizz
 export default function NotFound() {
   return (
     <main className="not-found">
-      <Link className="logo" href="/"><img src="/brand/logo.svg" alt="Donatello Pizza" width={240} height={276} /></Link>
+      <Link className="logo" href="/"><img src="/brand/logo.webp" alt="Donatello Pizza" width={398} height={420} /></Link>
       <span className="eyebrow">404</span>
       <h1>BU DİLİM<br /><em>BULUNAMADI.</em></h1>
       <p>Aradığınız sayfa taşınmış ya da hiç var olmamış olabilir. Menümüz ise her zaman yerinde.</p>
