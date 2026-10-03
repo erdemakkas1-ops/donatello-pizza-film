@@ -1,5 +1,4 @@
 // Product cut-outs (public/assets/drinks, 96x160 transparent WebP, bottom-aligned).
-// 2,5 lt bottles reuse the 1 lt image of the same drink.
 const flavours: [RegExp, string][] = [
   [/Coca-Cola Zero/, "cola-zero"],
   [/Coca-Cola/, "cola"],
@@ -15,7 +14,7 @@ function drinkFile(name: string, size?: string) {
   if (/^Su\b/.test(name)) return "su-500";
   const flavour = flavours.find(([re]) => re.test(name))?.[1];
   if (!flavour) return null;
-  return `${flavour}-${size === "330 ml" ? "330" : "1l"}`;
+  return `${flavour}-${size === "330 ml" ? "330" : size === "2,5 lt" ? "2_5l" : "1l"}`;
 }
 
 export function DrinkArt({ name, size }: { name: string; size?: string }) {
