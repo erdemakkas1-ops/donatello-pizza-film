@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useState, useSyncExternalStore, type FormEvent } from "react";
 import { Sheet, SheetClose, SheetContent, SheetDescription, SheetTitle } from "@/components/ui/sheet";
 import { business } from "../site-data";
 import { useCart, type CartLine } from "./cart";
@@ -15,10 +15,26 @@ const money = (v: number) => `${v.toLocaleString("tr-TR")} ₺`;
 const loadDetails = (): Details => {
   try { return { ...emptyDetails, ...JSON.parse(localStorage.getItem(DETAILS_KEY) || "{}") }; } catch { return emptyDetails; }
 };
-// The order note belongs to one order; contact details are kept for next time.
-const forgetNote = () => {
-  try { localStorage.setItem(DETAILS_KEY, JSON.stringify({ ...loadDetails(), note: "" })); } catch {}
-};
+// Order history lives on this device only (localStorage); it is never sent anywhere.
+type PastOrder = { id: string; at: string; lines: CartLine[]; total: number | null; delivery: Delivery };
+const ORDERS_KEY = "donatello-orders";
+const orderListeners = new Set<() => void>();
+let ordersCache: string | null = null;
+const readOrders = () => (ordersCache ??= (() => { try { return localStorage.getItem(ORDERS_KEY) ?? "[]"; } catch { return "[]"; } })());
+const parseOrders = (raw: string): PastOrder[] => { try { const v = JSON.parse(raw); return Array.isArray(v) ? v : []; } catch { return []; } };
+const subscribeOrders = (l: () => void) => { orderListeners.add(l); return () => { orderListeners.delete(l); }; };
+function saveOrder(order: Omit<PastOrder, "id" | "at">) {
+  const now = new Date();
+  ordersCache = JSON.stringify([{ ...order, id: String(now.getTime()), at: now.toISOString() }, ...parseOrders(readOrders())].slice(0, 20));
+  try { localStorage.setItem(ORDERS_KEY, ordersCache); } catch {}
+  orderListeners.forEach((l) => l());
+}
+function usePastOrders() {
+  const raw = useSyncExternalStore(subscribeOrders, readOrders, () => "[]");
+  return parseOrders(raw);
+}
+const formatDate = (iso: string) => new Intl.DateTimeFormat("tr-TR", { day: "numeric", month: "long", hour: "2-digit", minute: "2-digit" }).format(new Date(iso));
+
 const lineLabel = (l: CartLine) => `${l.name}${l.variant ? ` (${l.variant})` : ""}`;
 
 // Opening hours 10:30–02:00 (Istanbul). Outside them the order is still sent, with a heads-up.
@@ -48,10 +64,8 @@ function buildMessage(lines: CartLine[], d: Details, total: number | null) {
 
 // Mounted only while the sheet is open (client-side), so saved details can seed the initial state.
 function CheckoutForm({ onSent }: { onSent: () => void }) {
-  const { lines, setQty } = useCart();
-  const [saved, setDetails] = useState<Details>(loadDetails);
-  const pickupOnly = lines.some((l) => l.pickupOnly);
-  const details: Details = pickupOnly ? { ...saved, delivery: "Gel-al" } : saved;
+  const { lines, setQty, clear } = useCart();
+  const [details, setDetails] = useState<Details>(loadDetails);
   const [errors, setErrors] = useState<Partial<Record<keyof Details, string>>>({});
 
   const update = <K extends keyof Details>(key: K, value: Details[K]) => {
@@ -73,9 +87,11 @@ function CheckoutForm({ onSent }: { onSent: () => void }) {
       document.getElementById(`order-${Object.keys(next)[0]}`)?.focus();
       return;
     }
-    try { localStorage.setItem(DETAILS_KEY, JSON.stringify(details)); } catch {}
+    try { localStorage.setItem(DETAILS_KEY, JSON.stringify({ ...details, note: "" })); } catch {}
     const url = `https://wa.me/${business.whatsapp}?text=${encodeURIComponent(buildMessage(lines, details, total))}`;
     window.open(url, "_blank", "noopener,noreferrer");
+    saveOrder({ lines, total, delivery: details.delivery });
+    clear();
     onSent();
   };
 
@@ -102,9 +118,8 @@ function CheckoutForm({ onSent }: { onSent: () => void }) {
       <fieldset className="cart-choice">
         <legend>Teslimat</legend>
         {(["Paket servis", "Gel-al"] as Delivery[]).map((v) => (
-          <label key={v}><input type="radio" name="delivery" checked={details.delivery === v} disabled={pickupOnly && v === "Paket servis"} onChange={() => update("delivery", v)} />{v}</label>
+          <label key={v}><input type="radio" name="delivery" checked={details.delivery === v} onChange={() => update("delivery", v)} />{v}</label>
         ))}
-        {pickupOnly && <p className="cart-pickup">Sepetinizde gel-al’a özel kampanya olduğu için sipariş gel-al olarak verilir.</p>}
       </fieldset>
 
       <label className="cart-field" htmlFor="order-name">Ad Soyad
@@ -140,40 +155,84 @@ function CheckoutForm({ onSent }: { onSent: () => void }) {
   );
 }
 
+function OrderHistory({ onReorder }: { onReorder: () => void }) {
+  const orders = usePastOrders();
+  const { addLines } = useCart();
+  if (!orders.length) return <p className="cart-empty">Henüz sipariş vermediniz. Verdiğiniz siparişler burada listelenir.</p>;
+  return (
+    <div className="cart-history">
+      <p className="cart-history-note">Siparişleriniz yalnızca bu cihazda saklanır.</p>
+      <ol>
+        {orders.map((o) => (
+          <li key={o.id}>
+            <div className="cart-history-head"><b>{formatDate(o.at)}</b><span>{o.total !== null ? money(o.total) : "Fiyat onayda"}</span></div>
+            <ul>{o.lines.map((l) => <li key={l.key}>{l.qty} × {lineLabel(l)}</li>)}</ul>
+            <div className="cart-history-foot">
+              <span>{o.delivery}</span>
+              <button type="button" onClick={() => { addLines(o.lines); onReorder(); }}>TEKRAR SEPETE EKLE</button>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  );
+}
+
+type View = "cart" | "sent" | "history";
+
 export default function CartSheet() {
   const { lines, count, clear, open, setOpen } = useCart();
-  const [sent, setSent] = useState(false);
+  const orders = usePastOrders();
+  const [view, setView] = useState<View>("cart");
+  const show = (v: View) => { setView(v); setOpen(true); };
+  const tel = (n: string) => `tel:+9${n.replace(/\D/g, "")}`;
 
   return (
     <>
-      {count > 0 && (
-        <button type="button" className="cart-fab" onClick={() => setOpen(true)} aria-label={`Sepeti aç, ${count} ürün`}>
+      {count > 0 ? (
+        <button type="button" className="cart-fab" onClick={() => show("cart")} aria-label={`Sepeti aç, ${count} ürün`}>
           <span>SEPET</span><b>{count}</b>
         </button>
+      ) : orders.length > 0 && (
+        <button type="button" className="cart-fab cart-fab-quiet" onClick={() => show("history")}>
+          <span>SİPARİŞLERİM</span>
+        </button>
       )}
-      <Sheet open={open} onOpenChange={(o) => { setOpen(o); if (!o) setSent(false); }}>
+      <Sheet open={open} onOpenChange={(o) => { setOpen(o); if (!o) setView("cart"); }}>
         <SheetContent side="right" showCloseButton={false} className="cart-sheet">
           <div className="cart-head">
-            <SheetTitle className="cart-title">Sepetiniz</SheetTitle>
-            <SheetClose className="cart-close" aria-label="Sepeti kapat">KAPAT ✕</SheetClose>
+            <SheetTitle className="cart-title">{view === "history" ? "Siparişlerim" : "Sepetiniz"}</SheetTitle>
+            <div className="cart-head-actions">
+              {view === "cart" && lines.length > 0 && (
+                <button type="button" className="cart-clear" onClick={() => { if (window.confirm("Sepetteki tüm ürünler silinsin mi?")) clear(); }}>SEPETİ SİL</button>
+              )}
+              <SheetClose className="cart-close" aria-label="Kapat">KAPAT ✕</SheetClose>
+            </div>
+          </div>
+          <div className="cart-tabs" role="tablist" aria-label="Sepet görünümü">
+            <button type="button" role="tab" aria-selected={view !== "history"} onClick={() => setView("cart")}>SEPET{count > 0 && ` (${count})`}</button>
+            <button type="button" role="tab" aria-selected={view === "history"} onClick={() => setView("history")}>SİPARİŞLERİM{orders.length > 0 && ` (${orders.length})`}</button>
           </div>
           <SheetDescription className="cart-desc">
-            Siparişiniz WhatsApp üzerinden işletmeye iletilir; onay oradan gelir.
+            {view === "history" ? "Bu cihazdan verdiğiniz son siparişler." : "Siparişiniz WhatsApp üzerinden işletmeye iletilir; onay oradan gelir."}
           </SheetDescription>
 
-          {lines.length === 0 ? (
-            <p className="cart-empty">Sepetiniz boş. Menüden ürün ekleyebilirsiniz.</p>
-          ) : sent ? (
+          {view === "history" ? (
+            <OrderHistory onReorder={() => setView("cart")} />
+          ) : view === "sent" ? (
             <div className="cart-sent">
               <p>WhatsApp&apos;ta hazır mesajınız açıldı. Göndere basmayı unutmayın.</p>
-              <p>WhatsApp açılmadıysa bizi <a href={`tel:+9${(business.phone ?? "").replace(/\D/g, "")}`}>{business.phone}</a> numarasından arayabilirsiniz.</p>
+              <p>Siparişiniz &quot;Siparişlerim&quot; bölümüne kaydedildi, sepetiniz boşaltıldı.</p>
+              <p>WhatsApp açılmadıysa bizi <a href={tel(business.phone ?? "")}>{business.phone}</a> ya da <a href={tel(business.phone2)}>{business.phone2}</a> numarasından arayabilirsiniz.</p>
               <div className="cart-sent-actions">
-                <button type="button" onClick={() => setSent(false)}>SİPARİŞE DÖN</button>
-                <button type="button" onClick={() => { clear(); forgetNote(); setSent(false); setOpen(false); }}>SEPETİ TEMİZLE</button>
+                <button type="button" onClick={() => setView("history")}>SİPARİŞLERİM</button>
+                <button type="button" onClick={() => setOpen(false)}>KAPAT</button>
               </div>
             </div>
+          ) : lines.length === 0 ? (
+            <p className="cart-empty">Sepetiniz boş. Menüden ürün ekleyebilirsiniz.</p>
           ) : (
-            <CheckoutForm onSent={() => setSent(true)} />
+            <CheckoutForm onSent={() => setView("sent")} />
           )}
         </SheetContent>
       </Sheet>

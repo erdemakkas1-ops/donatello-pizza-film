@@ -1,4 +1,4 @@
-// Product cut-outs (public/assets/drinks, 96x160 transparent WebP, bottom-aligned).
+// Product cut-outs (public/assets/drinks and /desserts, 96x160 transparent WebP, bottom-aligned).
 const flavours: [RegExp, string][] = [
   [/Coca-Cola Zero/, "cola-zero"],
   [/Coca-Cola/, "cola"],
@@ -12,6 +12,9 @@ const flavours: [RegExp, string][] = [
 function drinkFile(name: string, size?: string) {
   if (/Ayran/.test(name)) return /1 lt/.test(name) ? "ayran-1l" : "ayran-300";
   if (/^Su\b/.test(name)) return "su-500";
+  if (/Maraş Kap/.test(name)) return "../desserts/maras-kap";
+  if (/Çikolata Rüyası/.test(name)) return "../desserts/carte-dor-cikolata";
+  if (/Meyve Rüyası/.test(name)) return "../desserts/carte-dor-meyve";
   const flavour = flavours.find(([re]) => re.test(name))?.[1];
   if (!flavour) return null;
   return `${flavour}-${size === "330 ml" ? "330" : size === "2,5 lt" ? "2_5l" : "1l"}`;
@@ -19,7 +22,9 @@ function drinkFile(name: string, size?: string) {
 
 export function DrinkArt({ name, size }: { name: string; size?: string }) {
   const file = drinkFile(name, size);
-  return file && (
+  // No photo yet (Kesme Dilim): keep an empty slot so names stay aligned with the rest of the group.
+  if (!file) return /Dondurma/.test(name) ? <i className="drink-art" aria-hidden="true" /> : null;
+  return (
     <i className="drink-art">
       <img src={`/assets/drinks/${file}.webp`} alt="" width={96} height={160} loading="lazy" decoding="async" />
     </i>
