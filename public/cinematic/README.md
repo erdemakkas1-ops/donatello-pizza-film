@@ -23,7 +23,7 @@ scene-06-final is scene-06-v1-original with: the baked-in "MENÜ" button painted
 from 3.36 s; the lifted slice taken from a Pika keyframe regeneration so its toppings
 stay put; a server spatula under the slice from Pika "Pikadditions", composited only
 where it appears outside the slice; and the baked "DONATELLO PIZZA" lettering replaced
-by the business logo from 2.8 s, tracked to the camera move and kept behind the
+by the business logo from 1.5 s (when it first peeks under the slice), tracked to the camera move and kept behind the
 slice and cheese strands.
 
 Two persistent native video elements crossfade between clips: 120 ms by default,
