@@ -54,8 +54,7 @@ export const sides:{title:string;size?:string;items:{name:string;price?:number}[
   {title:"Tatlılar",items:[{name:"Sufle",price:250},{name:"Profiterol",price:300},{name:"Soğuk Baklava 250 gr (4 dilim)",price:250},{name:"Soğuk Baklava 500 gr (8 dilim)",price:450},{name:"Soğuk Baklava 1000 gr (16 dilim)",price:800}]},
   {title:"Kutu İçecekler 330 ml",size:"330 ml",items:[{name:"Coca-Cola",price:90},{name:"Coca-Cola Zero",price:90},{name:"Fanta",price:90},{name:"Sprite",price:90},{name:"Fuse Tea Şeftali",price:90},{name:"Fuse Tea Limon",price:90},{name:"Fuse Tea Mango",price:90}]},
   {title:"İçecekler",items:[{name:"Ayran 300 ml",price:50},{name:"Ayran 1 lt",price:100},{name:"Su 500 ml",price:20}]},
-  // Ice cream prices not confirmed yet: they show "—" and the order total is confirmed on WhatsApp.
-  {title:"Dondurmalar",items:[{name:"Kesme Dilim Dondurma"},{name:"Maraş Kap Dondurma"},{name:"Carte d'Or Çikolata Rüyası"},{name:"Carte d'Or Meyve Rüyası"}]},
+  {title:"Dondurmalar",items:[{name:"Kesme Dilim Dondurma",price:80},{name:"Maraş Kap Dondurma",price:80},{name:"Carte d'Or Çikolata Rüyası",price:90},{name:"Carte d'Or Meyve Rüyası",price:90}]},
   {title:"İçecekler 1 Litre",size:"1 lt",items:[{name:"Coca-Cola",price:110},{name:"Coca-Cola Zero",price:110},{name:"Fanta",price:110},{name:"Sprite",price:110},{name:"Fuse Tea Şeftali",price:110},{name:"Fuse Tea Limon",price:110},{name:"Fuse Tea Mango",price:110}]},
   {title:"İçecekler 2,5 Litre",size:"2,5 lt",items:[{name:"Coca-Cola",price:180},{name:"Fanta",price:180}]},
 ];
@@ -85,19 +84,19 @@ export const googleReviews = {
 export type Campaign = { id: string; name: string; contents: string; price: number; image: string };
 const menuImg = (f: string) => `/assets/menus/${f}.webp`;
 export const campaigns: Campaign[] = [
-  { id: "favori-menu", name: "Favori Menü", contents: "1 orta boy pizza + 330 ml içecek", price: 599, image: menuImg("favori-menu") },
-  { id: "mini-menu", name: "Mini Menü", contents: "1 küçük boy karışık pizza + 1 orta boy parmak patates + 1 kutu içecek", price: 550, image: menuImg("mini-menu") },
-  { id: "pizzadan-marasa", name: "Pizzadan Maraşa", contents: "1 orta boy karışık pizza + 1 Maraş dondurma", price: 550, image: "/assets/menu/pizzas/karisik.webp" },
-  { id: "keyif-paketi", name: "Keyif Paketi", contents: "1 orta boy karışık pizza + 1 Carte d'Or + 1 kutu içecek", price: 600, image: "/assets/menu/pizzas/karisik.webp" },
+  { id: "favori-menu", name: "Favori Menü", contents: "1 orta boy pizza + 330 ml içecek", price: 499, image: menuImg("favori-menu") },
+  { id: "mini-menu", name: "Mini Menü", contents: "1 küçük boy karışık pizza + 1 orta boy parmak patates + 1 kutu içecek", price: 499, image: menuImg("mini-menu") },
+  { id: "pizzadan-marasa", name: "Pizzadan Maraşa", contents: "1 orta boy karışık pizza + 1 Maraş dondurma", price: 450, image: "/assets/menu/pizzas/karisik.webp" },
+  { id: "keyif-paketi", name: "Keyif Paketi", contents: "1 orta boy karışık pizza + 1 Carte d'Or + 1 kutu içecek", price: 550, image: "/assets/menu/pizzas/karisik.webp" },
   { id: "donatello-menu", name: "Donatello Menü", contents: "Donatello pizza büyük boy + 1 L içecek", price: 699, image: "/assets/menu/pizzas/donatello.webp" },
-  { id: "firsat-uclusu", name: "Fırsat Üçlüsü", contents: "2 orta boy karışık pizza + 1 L içecek", price: 999, image: menuImg("firsat-uclusu") },
+  { id: "firsat-uclusu", name: "Fırsat Üçlüsü", contents: "2 orta boy karışık pizza + 1 L içecek", price: 899, image: menuImg("firsat-uclusu") },
   { id: "aile-menu", name: "Aile Menü", contents: "2 orta boy karışık pizza + 4 adet nugget + parmak patates orta boy + 1 L içecek", price: 999, image: menuImg("aile-menu") },
   { id: "buyuk-keyif-menu", name: "Büyük Keyif Menü", contents: "2 büyük boy karışık pizza + 1 L içecek", price: 1099, image: menuImg("buyuk-keyif-menu") },
-  { id: "double-keyif-paketi", name: "Double Keyif Paketi", contents: "2 orta boy karışık pizza + 2 Carte d'Or + 1 L içecek", price: 1099, image: menuImg("firsat-uclusu") },
+  { id: "double-keyif-paketi", name: "Double Keyif Paketi", contents: "2 orta boy karışık pizza + 2 Carte d'Or + 1 L içecek", price: 999, image: menuImg("firsat-uclusu") },
   { id: "kanka-menu", name: "Kanka Menü", contents: "3 orta boy karışık pizza + 1 L içecek", price: 1199, image: menuImg("kanka-menu") },
   { id: "super-ikili-menu", name: "Süper İkili Menü", contents: "2 orta boy karışık pizza + 2 adet sufle + 1 L içecek", price: 1299, image: menuImg("super-ikili-menu") },
   { id: "parti-menu", name: "Parti Menü", contents: "3 büyük boy karışık pizza + parmak patates büyük boy + 6 adet nugget + 2,5 L içecek", price: 1799, image: menuImg("parti-menu") },
   { id: "citir-kova-menu", name: "Çıtır Kova Menü", contents: "Parmak patates orta boy + 4 adet nugget + 2 adet fleto", price: 299, image: menuImg("citir-kova-menu") },
-  { id: "tatli-dueti", name: "Tatlı Düeti", contents: "1 sufle + 1 kesme dilim dondurma", price: 330, image: menuImg("sufle") },
-  { id: "double-tatli-dueti", name: "Double Tatlı Düeti", contents: "2 sufle + 2 kesme dilim dondurma", price: 600, image: menuImg("sufle") },
+  { id: "tatli-dueti", name: "Tatlı Düeti", contents: "1 sufle + 1 kesme dilim dondurma", price: 300, image: menuImg("sufle") },
+  { id: "double-tatli-dueti", name: "Double Tatlı Düeti", contents: "2 sufle + 2 kesme dilim dondurma", price: 550, image: menuImg("sufle") },
 ];
