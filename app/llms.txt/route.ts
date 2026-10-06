@@ -25,8 +25,8 @@ export function GET() {
     "## Menüler",
     ...campaigns.map((c) => `- ${c.name}: ${c.contents} — ${tl(c.price)}`),
     "",
-    "## Yan ürünler ve içecekler",
-    ...sides.flatMap((g) => ["", `### ${g.title}`, ...g.items.map((i) => `- ${i.name}${g.size ? ` ${g.size}` : ""} — ${tl(i.price)}`)]),
+    "## Ekstralar ve içecekler",
+    ...sides.flatMap((g) => ["", `### ${g.section} — ${g.title}`, ...g.items.map((i) => `- ${i.name}${g.size ? ` ${g.size}` : ""} — ${tl(i.price)}`)]),
     "",
   ];
   return new Response(lines.join("\n"), { headers: { "Content-Type": "text/plain; charset=utf-8" } });

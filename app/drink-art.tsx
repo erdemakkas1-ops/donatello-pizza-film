@@ -12,6 +12,7 @@ const flavours: [RegExp, string][] = [
 function drinkFile(name: string, size?: string) {
   if (/Ayran/.test(name)) return /1 lt/.test(name) ? "ayran-1l" : "ayran-300";
   if (/^Su\b/.test(name)) return "su-500";
+  if (/Kesme Dilim/.test(name)) return "../desserts/kesme-dilim";
   if (/Maraş Kap/.test(name)) return "../desserts/maras-kap";
   if (/Çikolata Rüyası/.test(name)) return "../desserts/carte-dor-cikolata";
   if (/Meyve Rüyası/.test(name)) return "../desserts/carte-dor-meyve";
@@ -22,8 +23,7 @@ function drinkFile(name: string, size?: string) {
 
 export function DrinkArt({ name, size }: { name: string; size?: string }) {
   const file = drinkFile(name, size);
-  // No photo yet (Kesme Dilim): keep an empty slot so names stay aligned with the rest of the group.
-  if (!file) return /Dondurma/.test(name) ? <i className="drink-art" aria-hidden="true" /> : null;
+  if (!file) return null;
   return (
     <i className="drink-art">
       <img src={`/assets/drinks/${file}.webp`} alt="" width={96} height={160} loading="lazy" decoding="async" />
