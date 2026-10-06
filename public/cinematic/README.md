@@ -19,10 +19,12 @@ and bottom bands come from the neighbouring scenes' table.
 scene-05b-kesim (Pika 2.5 keyframes 4 -> 6 -> 8 slices, one hand and one pizza wheel)
 was rescaled to sit pixel-aligned between scenes 5 and 6.
 
-scene-06-final is scene-06-v1-original with the baked-in "MENÜ" button painted out
-from 3.36 s. The region the lifted slice travels through (right of the vertical cut,
-above the upper-right diagonal) is taken from a Pika 2.5 keyframe regeneration in which
-the slice keeps its toppings; the rest of the frame is the original.
+scene-06-final is scene-06-v1-original with: the baked-in "MENÜ" button painted out
+from 3.36 s; the lifted slice taken from a Pika keyframe regeneration so its toppings
+stay put; a server spatula under the slice from Pika "Pikadditions", composited only
+where it appears outside the slice; and the baked "DONATELLO PIZZA" lettering replaced
+by the business logo from 2.8 s, tracked to the camera move and kept behind the
+slice and cheese strands.
 
 Two persistent native video elements crossfade between clips: 120 ms by default,
 300 ms into and out of the cut clip to hide texture differences between generations.
