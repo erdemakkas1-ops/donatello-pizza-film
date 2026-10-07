@@ -34,7 +34,7 @@ export default function AydinlatmaMetni() {
           <li><b>Veri sorumlusu:</b> {controller} (&quot;Donatello Pizza&quot;)</li>
           <li><b>Adres:</b> {fill(kvkk.address, "Resmî adres")}</li>
           <li><b>Telefon:</b> {business.phone}</li>
-          <li><b>E-posta:</b> {fill(kvkk.email, "E-posta adresi")}</li>
+          <li><b>E-posta:</b> {kvkk.email ? <a href={`mailto:${kvkk.email}`}>{kvkk.email}</a> : fill(null, "E-posta adresi")}</li>
         </ul>
       </section>
 
@@ -86,7 +86,7 @@ export default function AydinlatmaMetni() {
       <section>
         <h2>6. Kişisel verilerin aktarılması</h2>
         <ul>
-          <li><b>Teslimat:</b> siparişinizin size ulaştırılması için ad, telefon ve adres bilgileriniz teslimatı yapan kurye ile paylaşılır ({fill(kvkk.courier, "Kendi kuryelerimiz / kurye firmasının adı")}).</li>
+          <li><b>Teslimat:</b> siparişleriniz {fill(kvkk.courier, "Kendi kurye personelimiz / kurye firmasının adı")} tarafından teslim edilir; ad, telefon ve adres bilgileriniz yalnızca siparişinizi getiren kuryeyle paylaşılır.</li>
           <li><b>Kamu kurumları:</b> kanunen yetkili kamu kurum ve kuruluşlarına, talep halinde ve mevzuatın gerektirdiği ölçüde aktarılabilir.</li>
           <li>
             <b>Yurt dışı:</b> siparişler WhatsApp üzerinden iletildiğinden mesajlarınız, bu hizmeti sağlayan WhatsApp

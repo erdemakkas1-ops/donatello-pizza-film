@@ -233,3 +233,4 @@ footer nav a{display:inline-block;padding:14px 0}
 .legal-updated{margin:28px 0 24px!important;font-size:13px!important;color:#9aa3b5!important}
 .cart-kvkk{margin:10px 0 0;font-size:12px;line-height:1.5;color:#c3bbaa;text-align:center}
 .cart-kvkk a,footer small a{color:inherit;text-decoration:underline;text-underline-offset:3px}
+.legal a{color:var(--lime);text-decoration:underline;text-underline-offset:3px}

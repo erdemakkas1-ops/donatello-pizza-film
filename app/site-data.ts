@@ -7,9 +7,9 @@ export const business = {address:"Selimpaşa Mah. Halaskargazi Cad. No:50/A",hou
 // is indexed, listed in the sitemap and linked from the order form and the footer.
 export const kvkk = {
   controller: null as string|null, // ticari unvan, şahıs işletmesiyse sahibinin adı soyadı
-  address: null as string|null,    // resmî (tebligat) adresi
-  email: null as string|null,      // KVKK başvuruları için e-posta
-  courier: null as string|null,    // "kendi kuryelerimiz" ya da kurye firmasının adı
+  address: "Selimpaşa Mah. Halaskargazi Cad. No:50/A, Silivri/İstanbul" as string|null, // resmî (tebligat) adresi
+  email: "info@donatellopizza.com.tr" as string|null, // KVKK başvuruları için e-posta
+  courier: "kendi kurye personelimiz" as string|null, // "kendi kurye personelimiz" ya da kurye firmasının adı
   retention: null as string|null,  // sipariş mesajlarının saklama süresi, ör. "1 yıl"
   updated: "7 Ekim 2026",
 };
