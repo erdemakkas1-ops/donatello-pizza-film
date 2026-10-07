@@ -86,8 +86,8 @@ export const googleReviews = {
   ],
 };
 
-// Set menus. Prices: printed menu, or the owner's list for the newest ones; Favori Menü, Fırsat Üçlüsü and
-// Mini Menü (and every image) come from the restaurant's Trendyol Yemek listing.
+// Set menus. Prices: printed menu, or the owner's list for the newest ones. Images: the restaurant's Trendyol Yemek
+// photos, Gemini re-renders of them (whole table in frame, Coca-Cola drinks), or composites of our product shots.
 export type Campaign = { id: string; name: string; contents: string; price: number; image: string };
 const menuImg = (f: string) => `/assets/menus/${f}.webp`;
 export const campaigns: Campaign[] = [
