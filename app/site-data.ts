@@ -6,7 +6,7 @@ export const business = {address:"Selimpaşa Mah. Halaskargazi Cad. No:50/A",hou
 // KVKK aydınlatma metni (app/aydinlatma-metni). null fields come from the business; once every field is filled the page
 // is indexed, listed in the sitemap and linked from the order form and the footer.
 export const kvkk = {
-  controller: null as string|null, // ticari unvan, şahıs işletmesiyse sahibinin adı soyadı
+  controller: "Mehmet Emir Çolak (şahıs işletmesi)" as string|null, // ticari unvan, şahıs işletmesiyse sahibinin adı soyadı
   address: "Selimpaşa Mah. Halaskargazi Cad. No:50/A, Silivri/İstanbul" as string|null, // resmî (tebligat) adresi
   email: "info@donatellopizza.com.tr" as string|null, // KVKK başvuruları için e-posta
   courier: "kendi kurye personelimiz" as string|null, // "kendi kurye personelimiz" ya da kurye firmasının adı
