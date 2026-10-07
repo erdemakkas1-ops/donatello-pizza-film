@@ -2,7 +2,7 @@
 
 import { useState, useSyncExternalStore, type FormEvent } from "react";
 import { Sheet, SheetClose, SheetContent, SheetDescription, SheetTitle } from "@/components/ui/sheet";
-import { business } from "../site-data";
+import { business, kvkkReady } from "../site-data";
 import { useCart, type CartLine } from "./cart";
 
 type Delivery = "Paket servis" | "Gel-al";
@@ -151,6 +151,7 @@ function CheckoutForm({ onSent }: { onSent: () => void }) {
       {!isOpenNow() && <p className="cart-closed">Şu an kapalıyız (açık: {business.hours}). Siparişiniz açılışta değerlendirilir.</p>}
 
       <button type="submit" className="cart-submit">WHATSAPP İLE SİPARİŞ VER</button>
+      {kvkkReady && <p className="cart-kvkk">Kişisel verileriniz <a href="/aydinlatma-metni" target="_blank" rel="noopener">Aydınlatma Metni</a> kapsamında işlenir.</p>}
     </form>
   );
 }

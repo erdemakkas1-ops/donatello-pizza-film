@@ -3,6 +3,18 @@ export const siteUrl = "https://donatello-pizza-film.vercel.app";
 
 export const business = {address:"Selimpaşa Mah. Halaskargazi Cad. No:50/A",hours:"10.30 – 02.00" as string|null,phone:"0530 236 38 86" as string|null,phone2:"0212 383 38 86",instagram:"donatellopizzaselimpasa" as string|null,whatsapp:"905302363886",serviceAreas:["Selimpaşa","Ortaköy","Kavaklı","Celaliye","Kamiloba"]};
 
+// KVKK aydınlatma metni (app/aydinlatma-metni). null fields come from the business; once every field is filled the page
+// is indexed, listed in the sitemap and linked from the order form and the footer.
+export const kvkk = {
+  controller: null as string|null, // ticari unvan, şahıs işletmesiyse sahibinin adı soyadı
+  address: null as string|null,    // resmî (tebligat) adresi
+  email: null as string|null,      // KVKK başvuruları için e-posta
+  courier: null as string|null,    // "kendi kuryelerimiz" ya da kurye firmasının adı
+  retention: null as string|null,  // sipariş mesajlarının saklama süresi, ör. "1 yıl"
+  updated: "7 Ekim 2026",
+};
+export const kvkkReady = Object.values(kvkk).every(Boolean);
+
 // Prices in TL from the printed menu; s/m/l for pizzas, price for side items.
 export type Sizes = {s?:number;m?:number;l?:number};
 export type Pizza = {id:string;name:string;group:PizzaGroup;toppings:string[];prices?:Sizes};

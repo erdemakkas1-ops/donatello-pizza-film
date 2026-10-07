@@ -214,3 +214,22 @@ footer nav a{display:inline-block;padding:14px 0}
 
 /* İçecekler on wide screens: cans and 1 L in the first two columns, Ayran & Su and 2,5 L stacked on the right */
 @media(min-width:1100px){.side-drinks .side-groups{grid-template-columns:repeat(3,minmax(0,1fr))}.side-drinks .side-groups>:nth-child(-n+2){grid-row:span 2}}
+
+/* KVKK aydınlatma metni: a readable single column in the site's type */
+.legal{max-width:760px;padding:56px 7% 96px;margin:0 auto}
+.legal .logo img{height:96px}
+.legal .eyebrow{display:block;margin:36px 0 10px;font-weight:800;letter-spacing:2px}
+.legal h1{margin:0 0 20px;font:clamp(32px,5vw,54px)/1.05 var(--font-display);color:var(--cream)}
+.legal h1 em{display:block;color:var(--orange,#f29a3a);font-style:normal}
+.legal-lead{font:italic 18px/1.6 var(--font-italic);color:#d8d1c1;margin:0 0 36px}
+.legal section{padding:24px 0;border-top:1px solid var(--line)}
+.legal h2{margin:0 0 12px;font:22px/1.2 var(--font-display);color:var(--lime)}
+.legal p,.legal li{font-size:15.5px;line-height:1.7;color:#e2dccd}
+.legal p{margin:0 0 10px}
+.legal ul{margin:0 0 10px;padding-left:20px}
+.legal li{margin:4px 0}
+.legal b{color:var(--cream)}
+.legal-todo{background:#f29a3a;color:#14160c;padding:1px 6px;border-radius:3px;font-weight:700}
+.legal-updated{margin:28px 0 24px!important;font-size:13px!important;color:#9aa3b5!important}
+.cart-kvkk{margin:10px 0 0;font-size:12px;line-height:1.5;color:#c3bbaa;text-align:center}
+.cart-kvkk a,footer small a{color:inherit;text-decoration:underline;text-underline-offset:3px}
