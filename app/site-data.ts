@@ -92,7 +92,7 @@ export type Campaign = { id: string; name: string; contents: string; price: numb
 const menuImg = (f: string) => `/assets/menus/${f}.webp`;
 export const campaigns: Campaign[] = [
   { id: "favori-menu", name: "Favori Menü", contents: "1 orta boy karışık pizza + 1 kutu içecek", price: 499, image: menuImg("favori-menu") },
-  { id: "mini-menu", name: "Mini Menü", contents: "1 küçük boy karışık pizza + 1 orta boy parmak patates + 1 kutu içecek", price: 599, image: menuImg("mini-menu") },
+  { id: "mini-menu", name: "Mini Menü", contents: "1 küçük boy karışık pizza + 1 orta boy parmak patates + 1 kutu içecek", price: 499, image: menuImg("mini-menu") },
   { id: "pizzadan-marasa", name: "Pizzadan Maraşa", contents: "1 orta boy karışık pizza + 1 Maraş cup dondurma", price: 450, image: menuImg("pizzadan-marasa") },
   { id: "keyif-paketi", name: "Keyif Paketi", contents: "1 orta boy karışık pizza + 1 Carte d'Or + 1 kutu içecek", price: 550, image: menuImg("keyif-paketi") },
   { id: "donatello-menu", name: "Donatello Menü", contents: "Donatello pizza büyük boy + 1 L içecek", price: 699, image: menuImg("donatello-menu") },
