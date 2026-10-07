@@ -10,7 +10,7 @@ export const kvkk = {
   address: "Selimpaşa Mah. Halaskargazi Cad. No:50/A, Silivri/İstanbul" as string|null, // resmî (tebligat) adresi
   email: "info@donatellopizza.com.tr" as string|null, // KVKK başvuruları için e-posta
   courier: "kendi kurye personelimiz" as string|null, // "kendi kurye personelimiz" ya da kurye firmasının adı
-  retention: null as string|null,  // sipariş mesajlarının saklama süresi, ör. "1 yıl"
+  retention: "3 yıl" as string|null, // Mesafeli Sözleşmeler Yönetmeliği m.20: satış kayıtları 3 yıl saklanır
   updated: "7 Ekim 2026",
 };
 export const kvkkReady = Object.values(kvkk).every(Boolean);
