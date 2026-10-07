@@ -185,13 +185,14 @@ body:has(.cart-fab) footer{padding-bottom:100px}
 footer nav{flex-wrap:wrap;row-gap:0}
 footer nav a{display:inline-block;padding:14px 0}
 
-/* Footer: business logo with the delivery area beside it */
-.footer-brand{display:flex;align-items:center;gap:clamp(20px,4vw,48px);margin:48px 0 28px}
-.footer-brand img{display:block;width:auto;height:clamp(110px,12vw,170px);flex:none}
-.footer-brand b{display:block;margin-bottom:12px;font-size:11px;letter-spacing:3px;color:var(--lime)}
-.footer-brand ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 0;font:clamp(22px,2.6vw,36px)/1.15 var(--font-display);color:var(--cream)}
-.footer-brand li:not(:last-child)::after{content:"·";margin:0 .4em;color:var(--lime)}
-@media(max-width:700px){.footer-brand{gap:20px;margin:36px 0 22px}.footer-brand img{height:110px}.footer-brand ul{flex-direction:column;gap:2px;font-size:21px}.footer-brand li::after{display:none}}
+/* Footer: business logo with the delivery area beside it; the text block never grows taller than the logo */
+.footer-brand{--brand-h:clamp(110px,11vw,160px);display:flex;align-items:center;gap:clamp(18px,3vw,40px);margin:48px 0 28px}
+.footer-brand img{display:block;width:auto;height:var(--brand-h);flex:none}
+.footer-brand>div{min-width:0;max-height:var(--brand-h)}
+.footer-brand b{display:block;margin-bottom:8px;font:700 11px/1.2 var(--font-sans);letter-spacing:3px;color:var(--lime)}
+.footer-brand ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:0 .35em;font:clamp(17px,2.2vw,30px)/1.25 var(--font-display);color:var(--cream)}
+.footer-brand li:not(:last-child)::after{content:","}
+@media(max-width:700px){.footer-brand{--brand-h:96px;gap:16px;margin:36px 0 22px}.footer-brand b{font-size:10px;letter-spacing:2px;margin-bottom:6px}.footer-brand ul{font-size:17px}}
 
 /* Ekstralar / İçecekler opened from their own tab: no divider above */
 .sides:first-child{margin-top:40px;padding-top:0;border-top:0}

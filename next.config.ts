@@ -1,7 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  experimental: {
+    // Vercel restored a stale Turbopack cache once and shipped old CSS with new markup; the build is fast without it.
+    turbopackFileSystemCacheForBuild: false,
+  },
 };
 
 export default nextConfig;
