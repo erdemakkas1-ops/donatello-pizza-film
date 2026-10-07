@@ -14,6 +14,7 @@ export function GET() {
     `- Site: ${siteUrl}`,
     `- Adres: ${business.address}`,
     `- Çalışma saatleri: ${business.hours}`,
+    `- Hizmet bölgesi: ${business.serviceAreas.join(", ")}`,
     `- Telefon / WhatsApp: ${business.phone}`,
     `- Telefon: ${business.phone2}`,
     `- Instagram: https://www.instagram.com/${business.instagram}/`,

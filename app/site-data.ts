@@ -1,7 +1,7 @@
 // Public address of the site; change here when a custom domain is connected (canonical, sitemap, robots, llms.txt).
 export const siteUrl = "https://donatello-pizza-film.vercel.app";
 
-export const business = {address:"Halaskargazi Cd. 50/A, İstanbul",hours:"10.30 – 02.00" as string|null,phone:"0530 236 38 86" as string|null,phone2:"0212 383 38 86",instagram:"donatellopizzaselimpasa" as string|null,whatsapp:"905302363886"};
+export const business = {address:"Halaskargazi Cd. 50/A, İstanbul",hours:"10.30 – 02.00" as string|null,phone:"0530 236 38 86" as string|null,phone2:"0212 383 38 86",instagram:"donatellopizzaselimpasa" as string|null,whatsapp:"905302363886",serviceAreas:["Selimpaşa","Ortaköy","Kavaklı","Celaliye","Kamiloba"]};
 
 // Prices in TL from the printed menu; s/m/l for pizzas, price for side items.
 export type Sizes = {s?:number;m?:number;l?:number};
@@ -61,23 +61,28 @@ export const sides:{section:(typeof sideSections)[number];art?:boolean;title:str
   {section:"İçecekler",art:true,title:"İçecekler 2,5 Litre",size:"2,5 lt",items:[{name:"Coca-Cola",price:180},{name:"Fanta",price:180}]},
 ];
 
-// Google reviews from the business's Google Maps listing (snapshot 2026-09-27): wording kept, punctuation tidied,
-// emoji and trailing asides dropped. Update rating/count and reviews here by hand; names are first name + initial.
+// Google reviews from the business's Google Maps listing (snapshot 2026-10-07, newest first): wording kept, punctuation
+// and spelling tidied, emoji and trailing asides dropped. Update rating/count and reviews here by hand; names are first
+// name + initial.
 export const googleReviews = {
   rating:"4,9",
-  count:58,
+  count:60,
   url:"https://maps.google.com/?cid=5758286451241750040",
   items:[
-    {name:"Atalay M.",text:"Şefin tavsiyesi üzerine hayatımda ilk defa et dönerli pizza denedim ve pişman olmadım. Ustamın ellerine sağlık, lezzet ve servis on numara. Dükkan da çok temiz."},
-    {name:"Emrah İ.",text:"Mekanın temizliği ve hijyeni dört dörtlük ayrıca pizzanın lezzeti gerçekten sıradan markaları arkasında bırakır. Çalışanları güler yüzlü ve samimiler kesinlikle tavsiye ederim."},
+    {name:"Barış S.",text:"Pizzalar aşırı güzeldi, işletmeciler de çok samimi ve nazik insanlar. Dört farklı orta boy pizza söyledik, hepsi birbirinden güzeldi. İlk defa yemiştik, çok memnun kaldık."},
+    {name:"Alperen E.",text:"Pizzalar sıcak sıcak geliyor, boyutlar düşündüğünüzden büyük. Doymayacağız korkusu olmadan gelip karnınızı doyurabilirsiniz."},
+    {name:"Kenan Y.",text:"Kesinlikle tavsiye ederim. İnşallah ilerleyen zamanlarda hak ettiği ilgiyi görüp daha büyük bir mekana da geçerler. Elinize sağlık."},
+    {name:"Gökhan M.",text:"Hüseyin abi çok ilgiliydi ve dönerli pizzası harikaydı, mutlaka denemelisiniz."},
+    {name:"Fatih Y.",text:"Geçerken uğradık, hamurlarını kendileri yoğuruyorlar. Lezzetli, güzel bir pizza yedik. Şiddetle tavsiye ederim."},
+    {name:"Hakan D.",text:"Kaliteli, hızlı ve sıcak pizza. Herkese tavsiye ederim."},
     {name:"Burcu B.",text:"Tek kelime ile mükemmel bir lezzet, ailecek tercih ettiğimiz tek adres. Malzemesi bol bol ve tap taze, şiddetle tavsiye ediyoruz. İşletme sahiplerinin ilgisi muhteşem."},
+    {name:"Satiye C.",text:"Lezzetlerine ve işletme sahibinin ilgisine hayran kaldığım bir mekan. Google yorumları üzerinden denemek istedim ve yazılan her şeyin doğru olduğu kanısına vardım. 4 Peynirli pizzaya bayıldım."},
+    {name:"Fatma Y.",text:"Pizzalar muhteşem, lezzet harika. İşletmeciler güler yüzlü, fiyatları makul. Tavsiyemdir."},
+    {name:"Atalay M.",text:"Şefin tavsiyesi üzerine hayatımda ilk defa et dönerli pizza denedim ve pişman olmadım. Ustamın ellerine sağlık, lezzet ve servis on numara. Dükkan da çok temiz."},
     {name:"Reyhan",text:"Gerçekten uzun zamandır yediğim en lezzetli pizzalardan biriydi. Hamuru çok başarılı, malzemesi bol ve kaliteli. Her diliminde emeği hissediliyor. Güler yüzlü hizmet de cabası."},
-    {name:"Satiye C.",text:"Lezzetlerine ve işletme sahibinin ilgisine hayran kaldığım bir mekan. Google yorumları üzerinden denemek istedim ve yazılan her şeyin doğru olduğu kanısına vardım."},
-    {name:"Gamze D.",text:"Pizza sevmememe rağmen harika bir lezzetti, aradığım lezzeti Donatello Pizza ile buldum. Herkese şiddetle tavsiye ediyorum, bence herkesin denemesi gereken bir lezzet."},
-    {name:"Figen A.",text:"Tek kelimeyle mükemmel. Pizzanın lezzeti, mekanın atmosferi, çalışanların güler yüzü sizi buraya bağlıyor."},
-    {name:"Şener Ş.",text:"Sait beyin tavsiyesi ile denedik, gerçekten muhteşem pizza, üstelik sıcacık geldi."},
+    {name:"Metehan S.",text:"Yediğim en iyi pizzalardan biriydi. Ortam doğal ve samimi, ilgilenen herkes çok güler yüzlü. Yeni pizza adresim."},
+    {name:"Emrah İ.",text:"Mekanın temizliği ve hijyeni dört dörtlük ayrıca pizzanın lezzeti gerçekten sıradan markaları arkasında bırakır. Çalışanları güler yüzlü ve samimiler kesinlikle tavsiye ederim."},
     {name:"Lucido",text:"Selimpaşa'ya gelip lezzet arıyorsanız kesinlikle tavsiyedir, hem doyurucu hem lezzetli. Çok memnun kalarak tüketiyoruz, üstelik çok temiz bir mekan."},
-    {name:"Burcu Ç.",text:"Efsane lezzetlerle dolu bir işletme. Her dilimde mutluluk veren 4 peynirli pizzayı mutlaka denemelisiniz. Çalışanlar ve işletme sahibi çok ilgili."},
   ],
 };
 
@@ -99,6 +104,6 @@ export const campaigns: Campaign[] = [
   { id: "super-ikili-menu", name: "Süper İkili Menü", contents: "2 orta boy karışık pizza + 2 adet sufle + 1 L içecek", price: 1299, image: menuImg("super-ikili-menu") },
   { id: "parti-menu", name: "Parti Menü", contents: "3 büyük boy karışık pizza + parmak patates büyük boy + 6 adet nugget + 2,5 L içecek", price: 1799, image: menuImg("parti-menu") },
   { id: "citir-kova-menu", name: "Çıtır Kova Menü", contents: "Parmak patates orta boy + 4 adet nugget + 2 adet fleto", price: 299, image: menuImg("citir-kova-menu") },
-  { id: "tatli-dueti", name: "Tatlı Düeti", contents: "1 sufle + 1 kesme dilim dondurma", price: 300, image: menuImg("sufle") },
-  { id: "double-tatli-dueti", name: "Double Tatlı Düeti", contents: "2 sufle + 2 kesme dilim dondurma", price: 550, image: menuImg("sufle") },
+  { id: "tatli-dueti", name: "Tatlı Düeti", contents: "1 sufle + 1 kesme dilim dondurma", price: 300, image: menuImg("tatli-dueti") },
+  { id: "double-tatli-dueti", name: "Double Tatlı Düeti", contents: "2 sufle + 2 kesme dilim dondurma", price: 550, image: menuImg("double-tatli-dueti") },
 ];
