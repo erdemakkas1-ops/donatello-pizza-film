@@ -1,5 +1,5 @@
 // Public address of the site; change here when a custom domain is connected (canonical, sitemap, robots, llms.txt).
-export const siteUrl = "https://donatello-pizza-film.vercel.app";
+export const siteUrl = "https://donatellopizza.com.tr";
 
 export const business = {address:"Selimpaşa Mah. Halaskargazi Cad. No:50/A",hours:"10.30 – 02.00" as string|null,phone:"0530 236 38 86" as string|null,phone2:"0212 383 38 86",instagram:"donatellopizzaselimpasa" as string|null,whatsapp:"905302363886",serviceAreas:["Selimpaşa","Ortaköy","Kavaklı","Celaliye","Kamiloba"]};
 
