@@ -1,7 +1,7 @@
 // Public address of the site; change here when a custom domain is connected (canonical, sitemap, robots, llms.txt).
 export const siteUrl = "https://donatello-pizza-film.vercel.app";
 
-export const business = {address:"Halaskargazi Cd. 50/A, İstanbul",hours:"10.30 – 02.00" as string|null,phone:"0530 236 38 86" as string|null,phone2:"0212 383 38 86",instagram:"donatellopizzaselimpasa" as string|null,whatsapp:"905302363886",serviceAreas:["Selimpaşa","Ortaköy","Kavaklı","Celaliye","Kamiloba"]};
+export const business = {address:"Selimpaşa Mah. Halaskargazi Cad. No:50/A",hours:"10.30 – 02.00" as string|null,phone:"0530 236 38 86" as string|null,phone2:"0212 383 38 86",instagram:"donatellopizzaselimpasa" as string|null,whatsapp:"905302363886",serviceAreas:["Selimpaşa","Ortaköy","Kavaklı","Celaliye","Kamiloba"]};
 
 // Prices in TL from the printed menu; s/m/l for pizzas, price for side items.
 export type Sizes = {s?:number;m?:number;l?:number};
@@ -42,8 +42,8 @@ export const products:Pizza[] = [
 export const pizzaImage = (p:Pizza) => `/assets/menu/pizzas/${p.id}.webp`;
 export const pizzaThumb = (p:Pizza) => `/assets/menu/pizzas/${p.id}-thumb.webp`;
 
-// Every pizza starts with mozzarella and pizza sauce; list rows show them first.
-export const toppingsText = (p:Pizza) => ["Mozzarella peyniri","Pizza sosu",...p.toppings].join(" / ");
+// Every pizza starts with pizza sauce and mozzarella; list rows show them first.
+export const toppingsText = (p:Pizza) => ["Pizza sosu","Mozzarella peyniri",...p.toppings].join(" / ");
 
 // Side menu, shown under two headings (section). size: the bottle size shared by a drinks group; it is appended to
 // the item name in the cart and the order message. art: show the product cut-out next to each item.
@@ -54,10 +54,10 @@ export const sides:{section:(typeof sideSections)[number];art?:boolean;title:str
   {section:"Ekstralar",title:"Patatesler",items:[{name:"Parmak Patates Büyük",price:220},{name:"Parmak Patates Orta",price:150},{name:"Elma Dilim Patates",price:170}]},
   {section:"Ekstralar",title:"Soslar",items:[{name:"Ketçap",price:10},{name:"Mayonez",price:10},{name:"Ranch Sos",price:25},{name:"Acı Sos",price:25},{name:"Barbekü Sos",price:25},{name:"Sarımsaklı Sos",price:25}]},
   {section:"Ekstralar",title:"Tatlılar",items:[{name:"Sufle",price:250},{name:"Profiterol",price:300},{name:"Soğuk Baklava 250 gr (4 dilim)",price:250},{name:"Soğuk Baklava 500 gr (8 dilim)",price:450},{name:"Soğuk Baklava 1000 gr (16 dilim)",price:800}]},
-  {section:"Ekstralar",art:true,title:"Dondurmalar",items:[{name:"Kesme Dilim Dondurma",price:80},{name:"Maraş Kap Dondurma",price:80},{name:"Carte d'Or Çikolata Rüyası",price:90},{name:"Carte d'Or Meyve Rüyası",price:90}]},
-  {section:"İçecekler",art:true,title:"Ayran & Su",items:[{name:"Ayran 300 ml",price:50},{name:"Ayran 1 lt",price:100},{name:"Su 500 ml",price:20}]},
+  {section:"Ekstralar",art:true,title:"Dondurmalar",items:[{name:"Kesme Dilim Dondurma",price:80},{name:"Maraş Cup Dondurma",price:80},{name:"Carte d'Or Çikolata Rüyası",price:90},{name:"Carte d'Or Meyve Rüyası",price:90}]},
   {section:"İçecekler",art:true,title:"Kutu İçecekler 330 ml",size:"330 ml",items:[{name:"Coca-Cola",price:90},{name:"Coca-Cola Zero",price:90},{name:"Fanta",price:90},{name:"Sprite",price:90},{name:"Fuse Tea Şeftali",price:90},{name:"Fuse Tea Limon",price:90},{name:"Fuse Tea Mango",price:90}]},
   {section:"İçecekler",art:true,title:"İçecekler 1 Litre",size:"1 lt",items:[{name:"Coca-Cola",price:110},{name:"Coca-Cola Zero",price:110},{name:"Fanta",price:110},{name:"Sprite",price:110},{name:"Fuse Tea Şeftali",price:110},{name:"Fuse Tea Limon",price:110},{name:"Fuse Tea Mango",price:110}]},
+  {section:"İçecekler",art:true,title:"Ayran & Su",items:[{name:"Ayran 300 ml",price:50},{name:"Ayran 1 lt",price:100},{name:"Su 500 ml",price:20}]},
   {section:"İçecekler",art:true,title:"İçecekler 2,5 Litre",size:"2,5 lt",items:[{name:"Coca-Cola",price:180},{name:"Fanta",price:180}]},
 ];
 
@@ -91,15 +91,15 @@ export const googleReviews = {
 export type Campaign = { id: string; name: string; contents: string; price: number; image: string };
 const menuImg = (f: string) => `/assets/menus/${f}.webp`;
 export const campaigns: Campaign[] = [
-  { id: "favori-menu", name: "Favori Menü", contents: "1 orta boy pizza + 330 ml içecek", price: 499, image: menuImg("favori-menu") },
-  { id: "mini-menu", name: "Mini Menü", contents: "1 küçük boy karışık pizza + 1 orta boy parmak patates + 1 kutu içecek", price: 499, image: menuImg("mini-menu") },
-  { id: "pizzadan-marasa", name: "Pizzadan Maraşa", contents: "1 orta boy karışık pizza + 1 Maraş dondurma", price: 450, image: "/assets/menu/pizzas/karisik.webp" },
-  { id: "keyif-paketi", name: "Keyif Paketi", contents: "1 orta boy karışık pizza + 1 Carte d'Or + 1 kutu içecek", price: 550, image: "/assets/menu/pizzas/karisik.webp" },
-  { id: "donatello-menu", name: "Donatello Menü", contents: "Donatello pizza büyük boy + 1 L içecek", price: 699, image: "/assets/menu/pizzas/donatello.webp" },
+  { id: "favori-menu", name: "Favori Menü", contents: "1 orta boy karışık pizza + 1 kutu içecek", price: 499, image: menuImg("favori-menu") },
+  { id: "mini-menu", name: "Mini Menü", contents: "1 küçük boy karışık pizza + 1 orta boy parmak patates + 1 kutu içecek", price: 599, image: menuImg("mini-menu") },
+  { id: "pizzadan-marasa", name: "Pizzadan Maraşa", contents: "1 orta boy karışık pizza + 1 Maraş cup dondurma", price: 450, image: menuImg("pizzadan-marasa") },
+  { id: "keyif-paketi", name: "Keyif Paketi", contents: "1 orta boy karışık pizza + 1 Carte d'Or + 1 kutu içecek", price: 550, image: menuImg("keyif-paketi") },
+  { id: "donatello-menu", name: "Donatello Menü", contents: "Donatello pizza büyük boy + 1 L içecek", price: 699, image: menuImg("donatello-menu") },
   { id: "firsat-uclusu", name: "Fırsat Üçlüsü", contents: "2 orta boy karışık pizza + 1 L içecek", price: 899, image: menuImg("firsat-uclusu") },
   { id: "aile-menu", name: "Aile Menü", contents: "2 orta boy karışık pizza + 4 adet nugget + parmak patates orta boy + 1 L içecek", price: 999, image: menuImg("aile-menu") },
   { id: "buyuk-keyif-menu", name: "Büyük Keyif Menü", contents: "2 büyük boy karışık pizza + 1 L içecek", price: 1099, image: menuImg("buyuk-keyif-menu") },
-  { id: "double-keyif-paketi", name: "Double Keyif Paketi", contents: "2 orta boy karışık pizza + 2 Carte d'Or + 1 L içecek", price: 999, image: menuImg("firsat-uclusu") },
+  { id: "double-keyif-paketi", name: "Double Keyif Paketi", contents: "2 orta boy karışık pizza + 2 Carte d'Or + 1 L içecek", price: 999, image: menuImg("double-keyif-paketi") },
   { id: "kanka-menu", name: "Kanka Menü", contents: "3 orta boy karışık pizza + 1 L içecek", price: 1199, image: menuImg("kanka-menu") },
   { id: "super-ikili-menu", name: "Süper İkili Menü", contents: "2 orta boy karışık pizza + 2 adet sufle + 1 L içecek", price: 1299, image: menuImg("super-ikili-menu") },
   { id: "parti-menu", name: "Parti Menü", contents: "3 büyük boy karışık pizza + parmak patates büyük boy + 6 adet nugget + 2,5 L içecek", price: 1799, image: menuImg("parti-menu") },

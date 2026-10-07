@@ -13,7 +13,7 @@ function drinkFile(name: string, size?: string) {
   if (/Ayran/.test(name)) return /1 lt/.test(name) ? "ayran-1l" : "ayran-300";
   if (/^Su\b/.test(name)) return "su-500";
   if (/Kesme Dilim/.test(name)) return "../desserts/kesme-dilim";
-  if (/Maraş Kap/.test(name)) return "../desserts/maras-kap";
+  if (/Maraş (Kap|Cup)/.test(name)) return "../desserts/maras-kap";
   if (/Çikolata Rüyası/.test(name)) return "../desserts/carte-dor-cikolata";
   if (/Meyve Rüyası/.test(name)) return "../desserts/carte-dor-meyve";
   const flavour = flavours.find(([re]) => re.test(name))?.[1];

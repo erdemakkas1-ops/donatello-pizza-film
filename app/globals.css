@@ -185,17 +185,30 @@ body:has(.cart-fab) footer{padding-bottom:100px}
 footer nav{flex-wrap:wrap;row-gap:0}
 footer nav a{display:inline-block;padding:14px 0}
 
-/* Footer: business logo with the delivery area beside it; the text block never grows taller than the logo */
-.footer-brand{--brand-h:clamp(110px,11vw,160px);display:flex;align-items:center;gap:clamp(18px,3vw,40px);margin:48px 0 28px}
+/* Footer: logo, the service areas stacked beside it (never taller than the logo), the house line on the right */
+.footer-brand{--brand-h:clamp(130px,11vw,160px);display:flex;flex-wrap:wrap;align-items:center;gap:20px clamp(18px,3vw,40px);margin:48px 0 28px}
 .footer-brand img{display:block;width:auto;height:var(--brand-h);flex:none}
 .footer-brand>div{min-width:0;max-height:var(--brand-h)}
-.footer-brand b{display:block;margin-bottom:8px;font:700 11px/1.2 var(--font-sans);letter-spacing:3px;color:var(--lime)}
-.footer-brand ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:0 .35em;font:clamp(17px,2.2vw,30px)/1.25 var(--font-display);color:var(--cream)}
-.footer-brand li:not(:last-child)::after{content:","}
-@media(max-width:700px){.footer-brand{--brand-h:96px;gap:16px;margin:36px 0 22px}.footer-brand b{font-size:10px;letter-spacing:2px;margin-bottom:6px}.footer-brand ul{font-size:17px}}
+.footer-brand b{display:block;margin-bottom:8px;font:700 11px/1.25 var(--font-sans);letter-spacing:2.5px;color:var(--lime)}
+.footer-brand ul{list-style:none;margin:0;padding:0;font:clamp(16px,1.5vw,20px)/1.2 var(--font-display);color:var(--cream)}
+.footer-quote{margin:0 0 0 auto;max-width:520px;text-wrap:balance;text-align:right;font:italic clamp(20px,2vw,28px)/1.3 var(--font-italic);color:var(--cream)}
+.footer-quote em{font:normal 1em var(--font-display);color:var(--lime)}
+@media(max-width:900px){.footer-quote{flex-basis:100%;max-width:none;margin:8px 0 0;text-align:left}}
+@media(max-width:700px){.footer-brand{--brand-h:120px;gap:16px;margin:36px 0 22px}.footer-brand>div{max-width:calc(100% - 136px)}.footer-brand b{font-size:9px;letter-spacing:1.5px;margin-bottom:6px}.footer-brand ul{font-size:14px}.footer-quote{font-size:19px}}
 
 /* Ekstralar / İçecekler opened from their own tab: no divider above */
 .sides:first-child{margin-top:40px;padding-top:0;border-top:0}
 
 /* Eight menu tabs: wrap onto two rows on phones instead of hiding some behind a scroll */
 @media(max-width:700px){.cats{flex-wrap:wrap;overflow:visible!important;row-gap:0!important}.cats button{min-height:40px;padding:10px 0!important}}
+
+/* Slogan under the logo: larger and bold */
+.menu .eyebrow{font-size:20px;font-weight:800;letter-spacing:.5px}
+@media(max-width:700px){.menu .eyebrow{font-size:17px}}
+
+/* Section headings (Menüler, Cazip Pizzalar ... İçecekler) in the logo's orange so they stand out from the lime subheads */
+:root{--orange:#f29a3a}
+.group-head h3,.campaign-head h3,.side-section>h3{color:var(--orange)}
+
+/* İçecekler on wide screens: cans and 1 L in the first two columns, Ayran & Su and 2,5 L stacked on the right */
+@media(min-width:1100px){.side-drinks .side-groups{grid-template-columns:repeat(3,minmax(0,1fr))}.side-drinks .side-groups>:nth-child(-n+2){grid-row:span 2}}
