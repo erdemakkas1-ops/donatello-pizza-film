@@ -73,14 +73,17 @@ export const sides:{section:(typeof sideSections)[number];art?:boolean;title:str
   {section:"İçecekler",art:true,title:"İçecekler 2,5 Litre",size:"2,5 lt",items:[{name:"Coca-Cola",price:180},{name:"Fanta",price:180}]},
 ];
 
-// Google reviews from the business's Google Maps listing (snapshot 2026-10-07, newest first): wording kept, punctuation
+// Google reviews from the business's Google Maps listing (snapshot 2026-10-11, newest first): wording kept, punctuation
 // and spelling tidied, emoji and trailing asides dropped. Update rating/count and reviews here by hand; names are first
 // name + initial.
 export const googleReviews = {
   rating:"4,9",
-  count:60,
+  count:63,
   url:"https://maps.google.com/?cid=5758286451241750040",
   items:[
+    {name:"Kaan B.",text:"Kesinlikle denemenizi tavsiye ederim, memnun kalacağınızdan eminim. Fiyatlar da oldukça iyi, ferah ve temiz bir mekan."},
+    {name:"Mehtap K.",text:"Dükkan sahiplerinin güler yüzü sayesinde her bütçeye uygun, sıcacık pizzalarının tadına baktık. Tavsiye ediyoruz, seve seve gelebilirsiniz."},
+    {name:"Eda Nur Ö.",text:"Bu lezzet çok iyi, daha önce böylesini denemedim. Gerçekten elinize sağlık, işinizi hakkıyla yapıyorsunuz."},
     {name:"Barış S.",text:"Pizzalar aşırı güzeldi, işletmeciler de çok samimi ve nazik insanlar. Dört farklı orta boy pizza söyledik, hepsi birbirinden güzeldi. İlk defa yemiştik, çok memnun kaldık."},
     {name:"Alperen E.",text:"Pizzalar sıcak sıcak geliyor, boyutlar düşündüğünüzden büyük. Doymayacağız korkusu olmadan gelip karnınızı doyurabilirsiniz."},
     {name:"Kenan Y.",text:"Kesinlikle tavsiye ederim. İnşallah ilerleyen zamanlarda hak ettiği ilgiyi görüp daha büyük bir mekana da geçerler. Elinize sağlık."},
