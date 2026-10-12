@@ -208,9 +208,12 @@ footer nav a{display:inline-block;padding:14px 0}
 .menu .eyebrow{font-size:20px;font-weight:800;letter-spacing:.5px}
 @media(max-width:700px){.menu .eyebrow{font-size:17px}}
 
-/* Section headings (Menüler, Cazip Pizzalar ... İçecekler) in the logo's green */
+/* Section headings (Menüler, Cazip Pizzalar ... İçecekler) in orange; the menu tabs in the logo's green */
 :root{--orange:#f29a3a;--logo-green:#aef747}
-.group-head h3,.campaign-head h3,.side-section>h3{color:var(--logo-green)}
+.group-head h3,.campaign-head h3,.side-section>h3{color:var(--orange)}
+.cats button{color:var(--logo-green)!important;opacity:.78}
+.cats button[data-state=active]{color:var(--logo-green)!important;opacity:1;font-weight:700}
+.cats button:hover,.cats button:focus-visible{opacity:1}
 
 /* İçecekler on wide screens: cans and 1 L in the first two columns, Ayran & Su and 2,5 L stacked on the right */
 @media(min-width:1100px){.side-drinks .side-groups{grid-template-columns:repeat(3,minmax(0,1fr))}.side-drinks .side-groups>:nth-child(-n+2){grid-row:span 2}}
