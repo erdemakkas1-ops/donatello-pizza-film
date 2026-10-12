@@ -237,3 +237,11 @@ footer nav a{display:inline-block;padding:14px 0}
 .cart-kvkk{margin:10px 0 0;font-size:12px;line-height:1.5;color:#c3bbaa;text-align:center}
 .cart-kvkk a,footer small a{color:inherit;text-decoration:underline;text-underline-offset:3px}
 .legal a{color:var(--lime);text-decoration:underline;text-underline-offset:3px}
+
+/* Menu tabs sit above the pizza slider: larger labels, room above and below */
+.menu .cats{margin-top:40px}
+.cats button{font-size:17px!important;letter-spacing:.5px}
+.menu .product-stage{margin-top:28px}
+/* Tablets and narrow laptops: 17px labels wrap onto a second row instead of overflowing */
+@media(min-width:701px) and (max-width:1180px){.cats{flex-wrap:wrap;height:auto!important;row-gap:0!important;column-gap:32px!important}.cats button{flex:0 0 auto}}
+@media(max-width:700px){.menu .cats{margin-top:28px}.cats button{font-size:14px!important;letter-spacing:.3px}.menu .product-stage{margin-top:18px}}
